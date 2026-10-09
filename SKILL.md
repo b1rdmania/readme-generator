@@ -2,7 +2,7 @@
 name: readme-generator
 description: Generates a complete README.md for any repo — software packages, CLI tools, Claude Code skills, or script collections. Reads the local project and, if a GitHub URL is given, researches it on the web first. Writes a publication-ready README in one pass with no placeholder sections, plus a GitHub About line and topics. Use when the user says "write a README", "generate a README", "update the README", "document this repo", "README for this skill", or "my README is stale".
 allowed-tools: ["Read", "Glob", "Grep", "Write", "Bash", "WebFetch", "WebSearch", "mcp__exa__web_search_exa", "mcp__exa__web_fetch_exa"]
-version: 2.3.0
+version: 2.3.1
 author: b1rdmania
 license: Apache-2.0
 keywords: [documentation, readme, markdown, claude-skill, github]
@@ -10,7 +10,7 @@ keywords: [documentation, readme, markdown, claude-skill, github]
 
 # README Generator
 
-Reads the project, writes the README. One pass, no placeholders, no TODO sections.
+Reads the project, writes the README in one pass.
 
 ## Commands
 
@@ -26,9 +26,9 @@ Reads the project, writes the README. One pass, no placeholders, no TODO section
 
 ### Step 0 — Research (if GitHub URL provided)
 
-If the user provides a GitHub URL, research it on the web before reading any local files. Use the Exa MCP if it is configured. If not, use WebSearch and WebFetch. If no search tool is available, skip to Step 1.
+If the user provides a GitHub URL, run Step 1 first, then research the repo on the web. Use the Exa MCP if it is configured. If not, use WebSearch and WebFetch. If no search tool is available, skip this step.
 
-Fill the bracketed values from the URL. Run in parallel:
+Fill the bracketed values from the URL and the files read in Step 1. Run in parallel:
 
 ```
 fetch: [repo-url] — repo description, topics, star count, recent activity
@@ -38,7 +38,7 @@ search: "[main dependency] install command" — current install command
 
 Use a research fact only if the local files confirm it. Drop anything the files contradict, and drop results about a different project with the same name.
 
-If no GitHub URL provided: skip to Step 1.
+If no GitHub URL provided: skip this step.
 
 ---
 
@@ -201,7 +201,7 @@ If `git remote -v` shows a `github.com` origin, also write a one-line **About** 
 
 - One sentence, 160 characters or fewer, no trailing period
 - Same substance as the README one-liner, tightened further
-- No filler adjectives
+- Follow Step 4
 - 3–6 lowercase topics as a separate list
 
 ```
@@ -217,8 +217,6 @@ Topics: claude-code, design-review, ui-audit, design-system, skill
 2. Ask: "Write to README.md?" Write only on approval. If a README.md exists, say so in the question
 3. If a GitHub remote exists and `gh` is authenticated, ask separately: "Set this as the repo's About?" On approval, run `gh repo edit <owner>/<repo> --description "..." --add-topic topic1,topic2`
 4. Offer one round of specific edits
-
-If a section can't be filled from available information, skip it or ask one specific question.
 
 ---
 
