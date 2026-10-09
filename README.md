@@ -12,7 +12,7 @@ git clone https://github.com/b1rdmania/readme-generator ~/.claude/skills/readme-
 
 ```
 /readme-generator                                  # current directory
-/readme-generator https://github.com/user/repo     # research the repo on the web first
+/readme-generator https://github.com/user/repo     # also research the repo on the web
 /readme-generator --update                         # update an existing README.md
 ```
 
@@ -20,10 +20,10 @@ git clone https://github.com/b1rdmania/readme-generator ~/.claude/skills/readme-
 
 ```mermaid
 flowchart TD
-    A{GitHub URL given?} -- yes --> B[Web research]
-    A -- no --> C[Read the project]
-    B -- description, install commands --> C
-    C -- config, entry points, SKILL.md --> D[Classify project type]
+    A[Read the project] -- config, entry points, SKILL.md --> B{GitHub URL given?}
+    B -- yes --> C[Web research, keep facts the files confirm]
+    B -- no --> D[Classify project type]
+    C -- description, install commands --> D
     D -- section set --> E[Draft README]
     E -- README, About line, topics --> F{You approve?}
     F -- yes --> G[Write README.md, set GitHub About]

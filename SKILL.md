@@ -1,6 +1,6 @@
 ---
 name: readme-generator
-description: Generates a complete README.md for any repo — software packages, CLI tools, Claude Code skills, or script collections. Reads the local project and, if a GitHub URL is given, researches it on the web first. Writes a publication-ready README in one pass with no placeholder sections, plus a GitHub About line and topics. Use when the user says "write a README", "generate a README", "update the README", "document this repo", "README for this skill", or "my README is stale".
+description: Generates a complete README.md for any repo — software packages, CLI tools, Claude Code skills, or script collections. Reads the local project and, if a GitHub URL is given, also researches it on the web. Writes a publication-ready README in one pass with no placeholder sections, plus a GitHub About line and topics. Use when the user says "write a README", "generate a README", "update the README", "document this repo", "README for this skill", or "my README is stale".
 allowed-tools: ["Read", "Glob", "Grep", "Write", "Bash", "WebFetch", "WebSearch", "mcp__exa__web_search_exa", "mcp__exa__web_fetch_exa"]
 version: 2.3.1
 author: b1rdmania
