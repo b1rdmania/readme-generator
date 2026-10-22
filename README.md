@@ -25,7 +25,8 @@ flowchart TD
     B -- no --> D[Classify project type]
     C -- description, install commands --> D
     D -- section set --> E[Draft README]
-    E -- README, About line, topics --> F{You approve?}
+    E -- draft prose --> S[STE pass]
+    S -- README, About line, topics --> F{You approve?}
     F -- yes --> G[Write README.md, set GitHub About]
 ```
 
@@ -35,6 +36,7 @@ flowchart TD
 - Writes a GitHub About line (160 characters or fewer) and 3 to 6 topics for any repo with a GitHub remote
 - Adds one Mermaid flowchart when the project has a real multi-step flow
 - Removes filler words such as "powerful", "robust" and "seamless"
+- Runs one ASD-STE100 Simplified Technical English (STE) pass on all prose. Code and commands stay as they are.
 
 ## What it doesn't do
 
@@ -45,6 +47,8 @@ flowchart TD
 ## Requirements
 
 Web research is optional. The skill uses the Exa MCP if it is configured, then the built-in WebSearch and WebFetch. With no search tool, it reads the local files only.
+
+The STE pass always runs. The `simple-english` skill is optional: the skill uses the one from [claude-plain-english-skill](https://github.com/b1rdmania/claude-plain-english-skill) if it is installed. Without it, the skill applies its own short set of STE rules.
 
 ## License
 
